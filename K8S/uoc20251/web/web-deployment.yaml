@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: web-uoc
+  name: web-uoc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-uoc
+  template:
+    metadata:
+      labels:
+        app: web-uoc
+    spec:
+      containers:
+        - env:
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  key: POSTGRES_DB
+                  name: env-db
+            - name: POSTGRES_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: POSTGRES_HOST
+                  name: env-db
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: POSTGRES_PASSWORD
+                  name: env-db
+            - name: POSTGRES_USER
+              valueFrom:
+                configMapKeyRef:
+                  key: POSTGRES_USER
+                  name: env-db
+          image: web-uoc
+          name: latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+              hostPort: 3000
+              protocol: TCP
+          resources: {}
+      restartPolicy: Always
+status: {}

@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  POSTGRES_DB: uoc2025
+  POSTGRES_HOST: db-uoc
+  POSTGRES_PASSWORD: dbpassword
+  POSTGRES_USER: profe
+kind: ConfigMap
+metadata:
+  name: env-db

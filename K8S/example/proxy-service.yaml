@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: voto-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false" 
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: vote.info
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: vote
+                port:
+                  number: 8080
+    - host: result.info
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: result
+                port:
+                  number: 8081
