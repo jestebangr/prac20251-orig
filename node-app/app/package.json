@@ -1,0 +1,19 @@
+{
+  "name": "uoc20251",
+  "version": "1.0.0",
+  "description": "Web page for practice 2025-1",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "UOC",
+  "license": "ISC",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.16",
+    "express": "^5.1.0",
+    "mariadb": "^3.4.5",
+    "tailwindcss": "^4.1.16"
+  }
+}
